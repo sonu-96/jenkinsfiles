@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('hello'){
             steps{
-                sh ' echo "hello world" '
+                sh ' echo "hello world" ; pwd ; ls '
             }
         }
         stage('dir'){
             steps{
-                sh ' mkdir coool '
+                sh ' mkdir coool1 '
             }
         }
     }
