@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('clone repo') {
+            steps {
+                git 'https://github.com/Gaur95/test12.git'
+            }
+        }
+    }
+}
