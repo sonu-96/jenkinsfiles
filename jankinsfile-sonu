@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('clone repo') {
+            steps {
+                git 'https://github.com/sonu-96/jenkinsfiles.git'
+            }
+        }
+        stage('clone check') {
+            steps {
+                sh 'pwd ; ls'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'docker build -t sonu96/apache:1.1.1 .'
+            }
+        }
+        stage('docker run') {
+            steps {
+                sh 'docker rm -f sy1 ; docker run -itd --name sy1 -p 1144:80 sonu96/apache:1.1.1'
+            }
+        }
+        stage('docker check') {
+            steps {
+                sh 'pwd ; docker ps'
+            }
+        }
+    }
+}
