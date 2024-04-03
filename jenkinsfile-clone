@@ -7,5 +7,10 @@ pipeline {
                 git 'https://github.com/Gaur95/test12.git'
             }
         }
+    stage('clone check') {
+            steps {
+                sh 'pwd ; ls'
+            }
+        }
     }
 }
