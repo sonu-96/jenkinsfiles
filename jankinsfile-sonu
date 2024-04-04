@@ -22,9 +22,14 @@ pipeline {
                 sh 'docker rm -f sy1 ; docker run -itd --name sy1 -p 1144:80 sonu96/apache:1.1.1'
             }
         }
-        stage('docker check') {
+        stage('docker login') {
             steps {
-                sh 'pwd ; docker ps'
+                sh 'docker login  -u $username -p $password '
+            }
+        }
+         stage('docker push') {
+            steps {
+                sh 'docker push  sonu96/apache:1.1.1'
             }
         }
     }
